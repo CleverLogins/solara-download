@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countdown to Download</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        .countdown {
+            font-size: 2em;
+            color: #333;
+        }
+        .download-link {
+            display: none;
+            margin-top: 20px;
+            font-size: 1.2em;
+        }
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const countdownElement = document.getElementById("countdown");
+            const downloadLink = document.getElementById("download-link");
+
+            let countdown = 10; // Countdown time in seconds
+
+            const interval = setInterval(() => {
+                countdown--;
+                countdownElement.textContent = countdown;
+
+                if (countdown <= 0) {
+                    clearInterval(interval);
+                    countdownElement.textContent = "Download starting...";
+                    downloadLink.style.display = "block";
+                    // Automatically trigger the download
+                    downloadLink.click();
+                }
+            }, 1000);
+        });
+    </script>
+</head>
+<body>
+    <h1>Countdown to Download</h1>
+    <p class="countdown">Your download will start in <span id="countdown">10</span> seconds.</p>
+    <a id="download-link" class="download-link" href="Bootstrapper_v2.18.exe" download>Click here if the download does not start automatically.</a>
+</body>
+</html>
